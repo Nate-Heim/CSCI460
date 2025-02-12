@@ -82,3 +82,78 @@ At the end of the log you should see this:
 csci_add: Adding 10 and 20
 csci_add: Result = 30
 
+```
+
+# **📝 PA2_A - File I/O Operations in C**
+## **📌 Overview**
+
+This project is part of Programming Assignment 2 (PA2_A) for CSCI 460 - Operating Systems.
+It demonstrates basic file I/O operations in C, allowing users to interact with a file through an interactive command-line interface.
+🔹 Features
+
+✅ Read from a file (r) – Read a specified number of bytes and display them.
+
+✅ Write to a file (w) – Overwrite or add new content to the file.
+
+✅ Seek in a file (s) – Move the file pointer to a specific position for reading or writing.
+
+✅ Exit program (CTRL+D) – Close the application cleanly.
+
+# **🚀 How to Compile & Run**
+## **1️⃣ Compile the Program**
+
+```
+gcc -o pa2test pa2test.c
+```
+
+## **2️⃣ Run the Program**
+
+```
+./pa2test <filename>
+```
+
+## **📌 If the file does not exist, it will be created automatically.**
+
+## **🛠 Example Usage**
+
+### **1️⃣ Writing to a File**
+
+**Option (r for read, w for write, s for seek)**: w
+
+**Enter the string you want to write**: Hello, world!
+
+### **2️⃣ Reading from a File**
+
+**Option (r for read, w for write, s for seek)**: r
+
+**Enter the number of bytes you want to read**: 5
+
+**Read data**: Hello
+
+### **3️⃣ Seeking in a File**
+
+**Option (r for read, w for write, s for seek)**: s
+
+**Enter an offset value**: 2
+
+**Enter a value for whence (0 for SEEK_SET, 1 for SEEK_CUR, 2 for SEEK_END)**: 0
+
+**New file position**: 2
+
+### **4️⃣ Exiting the Program**
+
+CTRL+D detected, exiting...
+
+## **📜 Notes**
+
+    The program provides error handling for invalid inputs and file operations.
+    All operations modify the file permanently, so use with caution.
+    Future improvements could include appending, clearing file contents, and file info retrieval.
+
+# **📌 Author**
+
+## **Nate Heim**
+### Course Professor: Dr. Anh Nguyen
+
+
+
