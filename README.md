@@ -151,9 +151,8 @@ CTRL+D detected, exiting...
     Future improvements could include appending, clearing file contents, and file info retrieval.
 
 # **📌 Author**
+> Nate Heim
 
-## **Nate Heim**
-### Course Professor: Dr. Anh Nguyen
 
 
 
