@@ -1,4 +1,5 @@
 # **CSCI 460 - Operating Systems**
+#             **🏫**
 ## **Programming Assignment 1 (PA1)**  
 --- This repository contains the implementation of the following ---
 
@@ -186,10 +187,6 @@ sudo insmod pa2_char_driver.ko
 sudo mknod -m 777 /dev/pa2_char_driver c 240 0
 echo "Hello, Driver!" > /dev/pa2_char_driver
 cat /dev/pa2_char_driver
-
-To check that it worked correctly:
-
-dmesg | tail
 ```
 
 ### **6️⃣ Integration with PA2_A (pa2test)**
@@ -198,7 +195,39 @@ dmesg | tail
 ./pa2test /dev/pa2_char_driver
 ```
     This allows read, write, and seek operations using the character device driver.
+## **📜 Notes**
+        This character device driver creates a virtual device file, enabling file operations 
+        such as read, write, and seek directly on the device. It maintains an internal buffer
+        to store data written to the device. The file pointer (f_pos) keeps track of the 
+        current position, ensuring consistent reading and writing. Seek operations allow 
+        changing the file pointer to read or write at different positions.
+        Logging is implemented using printk() to track device interactions, viewable with dmesg.
 
+### **Compiling and Loading the Module:**
+ 1️⃣ Ensure you are using the correct kernel version **(linux-hwe-4.15.0)**.  
+ 2️⃣ Compile the module using make, and load it with insmod.  
+ 3️⃣ We use mknod to create the device file:  
+```
+    sudo mknod -m 777 /dev/pa2_char_driver c 240 0
+```
+### **Interacting with the Device:**
+Use standard commands such as echo, cat, or PA2_A's pa2test to interact with the device.  
+Example:  
+```
+    echo "Hello, Driver!" > /dev/pa2_char_driver
+    cat /dev/pa2_char_driver
+```
+### **Logging and Debugging:**
+All operations are logged using printk() and can be viewed with:  
+
+    dmesg | tail
+
+### **Cleanup and Unloading:**  
+Unload the module using rmmod, and delete the device file when done:
+```
+sudo rmmod pa2_char_driver
+sudo rm /dev/pa2_char_driver
+```
 # **📌 Author**
 > Nate Heim
 
