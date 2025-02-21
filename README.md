@@ -150,6 +150,55 @@ CTRL+D detected, exiting...
     All operations modify the file permanently, so use with caution.
     Future improvements could include appending, clearing file contents, and file info retrieval.
 
+# **📌 PA2_B: Character Device Driver LKM**
+### **1️⃣ Overview**
+
+PA2_B involves writing a character device driver as a Loadable Kernel Module (LKM).
+This device driver allows file I/O operations (read, write, and seek) to be performed on a virtual device file.
+
+### **2️⃣ Features**
+
+    ✅ Read from the device – Reads data from the device buffer.
+    ✅ Write to the device – Writes data to the device buffer.
+    ✅ Seek in the device – Moves the file pointer within the buffer.
+    ✅ Load and unload the module – Using insmod and rmmod.
+    ✅ Logging – Logs all operations to the kernel log using printk().
+
+### **3️⃣ Key Files**
+
+📂 Character Device Driver LKM
+
+    pa2_char_driver.c (Implementation of the character device driver.)
+    Makefile (For building the LKM.)
+    pa2_char_driver.ko (Compiled LKM.)
+
+### **4️⃣ How to Compile & Load the Module**
+
+```
+make clean
+make
+sudo insmod pa2_char_driver.ko
+```
+
+### **5️⃣ How to Interact with the Device**
+
+```
+sudo mknod -m 777 /dev/pa2_char_driver c 240 0
+echo "Hello, Driver!" > /dev/pa2_char_driver
+cat /dev/pa2_char_driver
+
+To check that it worked correctly:
+
+dmesg | tail
+```
+
+### **6️⃣ Integration with PA2_A (pa2test)**
+
+```
+./pa2test /dev/pa2_char_driver
+```
+    This allows read, write, and seek operations using the character device driver.
+
 # **📌 Author**
 > Nate Heim
 
