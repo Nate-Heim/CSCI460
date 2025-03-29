@@ -228,6 +228,52 @@ Unload the module using rmmod, and delete the device file when done:
 sudo rmmod pa2_char_driver
 sudo rm /dev/pa2_char_driver
 ```
+
+---
+
+# **📌 PA3 - Multithreaded DNS Resolver in C**
+
+## **1️⃣ Overview**
+This assignment (PA3) involves building a **multi-threaded hostname resolution system** in C. It uses **POSIX threads** to implement:
+
+- A pool of **requester threads** that read hostnames from input files
+- A pool of **resolver threads** that perform DNS lookups
+- A **bounded shared buffer (array)** for communication between requester and resolver threads
+
+The entire solution was submitted as a ZIP file:  
+📦 `PA3_Final.zip`
+
+---
+
+## **2️⃣ Features**
+✅ Thread-safe shared buffer using mutexes and condition variables  
+✅ Producer-consumer model to prevent race conditions  
+✅ Graceful thread termination without deadlock  
+✅ Accurate logging of requested and resolved hostnames  
+✅ Valgrind clean: no memory leaks  
+✅ Input validation and error handling included
+
+---
+
+## **3️⃣ Files Inside `PA3_Final.zip`**
+- `multi-lookup.c` – Main program with thread logic  
+- `multi-lookup.h` – Thread argument structures and declarations  
+- `array.c` / `array.h` – Thread-safe bounded buffer  
+- `util.c` / `util.h` – Provided DNS lookup utility  
+- `Makefile` – For compiling the full project  
+- `input/` – Sample input files for testing  
+- `serviced.txt` – Log of hostnames handled by requester threads  
+- `resolved.txt` – Log of hostname → IP mappings by resolver threads
+
+---
+
+## **4️⃣ How to Run**
+After extracting the ZIP:
+
+```bash
+make
+./multi-lookup 3 3 serviced.txt resolved.txt input/names1.txt input/names2.txt
+```
 # **📌 Author**
 > Nate Heim
 
